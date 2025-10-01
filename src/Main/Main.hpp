@@ -3,7 +3,7 @@
 
 #include "../Scene/Scene.hpp"
 #include "../Game/Game.hpp"
-
+#include "../Player/Player.hpp"
 #include "../Menu/Menu.hpp"
 
 #include <iostream>
@@ -19,15 +19,13 @@ class Main : public Scene
     void Init() override
     {
         background_color = BLACK;
+
+        std::unique_ptr<Player> player = std::make_unique<Player>();
+        game.AddEntity(std::move(player));
     }
 
     void Update() override
     {
-
-        if (IsKeyDown(KEY_A)) 
-        {
-            game.SetScene(Scenes::menu_scene.get());
-        }
     }
 
     void Draw() override

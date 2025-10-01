@@ -8,12 +8,7 @@ extern Game game;
 
 class Player : public Entity
 {
-public:    
-    Player(float x, float y) {
-        this->x = x;
-        this->y = y;
-    }
-
+public:
     void Init() override;
     void Update() override;
     void Draw() override;
