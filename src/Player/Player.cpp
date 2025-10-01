@@ -4,13 +4,13 @@
 
 void Player::Init()
 {
-    x = game.WIDTH/2-100/2;
+    x = game.WIDTH/2-width/2;
     y = game.HEIGHT-100;
 }
 
 void Player::Update()
 {
-    x = Clamp(x, 0, game.WIDTH-100);
+    x = Clamp(x, 0, game.WIDTH-width);
     if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT))
     {
         x -= 500 * GetFrameTime();
@@ -23,5 +23,5 @@ void Player::Update()
 
 void Player::Draw()
 {
-    DrawRectangle(x, y, 100, 20, RED);
+    DrawRectangle(x, y, width, height, RED);
 }

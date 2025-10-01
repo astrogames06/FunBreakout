@@ -1,10 +1,12 @@
-#ifndef GAMESCENE_H
-#define GAMESCENE_H
+#ifndef MAIN_H
+#define MAIN_H
 
 #include "../Scene/Scene.hpp"
 #include "../Game/Game.hpp"
-#include "../Player/Player.hpp"
 #include "../Menu/Menu.hpp"
+
+#include "../Player/Player.hpp"
+#include "../Ball/Ball.hpp"
 
 #include <iostream>
 
@@ -22,6 +24,9 @@ class Main : public Scene
 
         std::unique_ptr<Player> player = std::make_unique<Player>();
         game.AddEntity(std::move(player));
+
+        std::unique_ptr<Ball> ball = std::make_unique<Ball>();
+        game.AddEntity(std::move(ball));
     }
 
     void Update() override

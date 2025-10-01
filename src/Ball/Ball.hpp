@@ -1,17 +1,14 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef BALL_H
+#define BALL_H
 
 #include "../Game/Game.hpp"
 #include "../Entity/Entity.hpp"
 
 extern Game game;
 
-class Player : public Entity
+class Ball : public Entity
 {
 public:
-    int width = 100;
-    int height = 20;
-
     void Init() override;
     void Update() override;
     void Draw() override;
