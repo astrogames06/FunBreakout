@@ -1,15 +1,18 @@
-#ifndef BALL_H
-#define BALL_H
+#ifndef BRICK_H
+#define BRICK_H
 
 #include "../Game/Game.hpp"
 #include "../Entity/Entity.hpp"
 
+const int BRICK_WIDTH = 50;
+const int BRICK_HEIGHT = 20;
+
 extern Game game;
 
-class Ball : public Entity
+class Brick : public Entity
 {
 public:
-    const float BALL_SIZE = 20.f;
+    Color color;
 
     void Init() override;
     void Update() override;

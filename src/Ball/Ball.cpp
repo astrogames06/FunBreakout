@@ -4,7 +4,6 @@
 
 #include "../Player/Player.hpp"
 
-const float BALL_SIZE = 20.f;
 const float BALL_SPEED = 200.f;
 Vector2 vel;
 
@@ -13,14 +12,18 @@ void Ball::Init()
     x = game.WIDTH/2-BALL_SIZE/2;
     y = game.HEIGHT/2-BALL_SIZE/2;
 
-    vel = {
-        (float)GetRandomValue(-1, 1),
-        (float)GetRandomValue(-1, 1)
-    };
 }
 
 void Ball::Update()
 {
+    if (IsKeyPressed(KEY_T))
+    {
+        
+    vel.x = (GetRandomValue(0, 1) == 0) ? -1 : 1;
+    vel.y = (GetRandomValue(0, 1) == 0) ? -1 : 1;
+    }
+    if (IsKeyDown(KEY_R)) vel = Vector2Zero();
+
     x += vel.x * BALL_SPEED * GetFrameTime();
     y += vel.y * BALL_SPEED * GetFrameTime();
 
@@ -41,6 +44,7 @@ void Ball::Update()
         y = 0;
         vel.y *= -1;
     }
+    // bottom side
     if (y+BALL_SIZE > game.HEIGHT)
     {
         y = game.HEIGHT-BALL_SIZE;
@@ -62,5 +66,4 @@ void Ball::Update()
 void Ball::Draw()
 {
     DrawRectangle(x, y, BALL_SIZE, BALL_SIZE, WHITE);
-    DrawCircle(x, y+BALL_SIZE, 2.f, GREEN);
 }

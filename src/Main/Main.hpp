@@ -8,6 +8,8 @@
 #include "../Player/Player.hpp"
 #include "../Ball/Ball.hpp"
 
+#include "../BrickSystem/BrickSystem.hpp"
+
 #include <iostream>
 
 extern Game game;
@@ -18,6 +20,11 @@ namespace Scenes
 
 class Main : public Scene
 {
+public:
+    int score = 0;
+    int level = 0;
+
+private:
     void Init() override
     {
         background_color = BLACK;
@@ -27,15 +34,26 @@ class Main : public Scene
 
         std::unique_ptr<Ball> ball = std::make_unique<Ball>();
         game.AddEntity(std::move(ball));
+
+        BrickLoadSystem(game_levels[level]);
     }
 
     void Update() override
     {
+        if (game.GetEntitiesOfType<Brick>().size() == 0)
+        {
+            level = (level + 1) % game_levels.size();
+            BrickLoadSystem(game_levels[level]);
+        }
     }
 
     void Draw() override
     {
-        DrawText("Game Scene!", 10, 10, 20, WHITE);
+        std::string score_str = "Score: " + std::to_string(score);
+        DrawText(score_str.c_str(), 10, 10, 20, WHITE);
+
+        std::string level_str = "Level: " + std::to_string(level);
+        DrawText(level_str.c_str(), 10, 30, 20, WHITE);
     }
 };
 
