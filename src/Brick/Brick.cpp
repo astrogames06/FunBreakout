@@ -24,7 +24,7 @@ std::array<Color, 6> brick_colors = {
 
 void Brick::Init()
 {
-    color = brick_colors[GetRandomValue(0, brick_colors.size())];
+    color = brick_colors[GetRandomValue(0, brick_colors.size()-1)];
 }
 
 void Brick::Update()

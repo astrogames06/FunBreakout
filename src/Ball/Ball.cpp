@@ -18,9 +18,8 @@ void Ball::Update()
 {
     if (IsKeyPressed(KEY_T))
     {
-        
-    vel.x = (GetRandomValue(0, 1) == 0) ? -1 : 1;
-    vel.y = (GetRandomValue(0, 1) == 0) ? -1 : 1;
+        vel.x = (GetRandomValue(0, 1) == 0) ? -1 : 1;
+        vel.y = (GetRandomValue(0, 1) == 0) ? -1 : 1;
     }
     if (IsKeyDown(KEY_R)) vel = Vector2Zero();
 

@@ -28,4 +28,5 @@ void BrickLoadSystem(const std::vector<std::string>& level)
             }
         }
     }
+    std::cout << "Added " << game.GetEntitiesOfType<Brick>().size() << " bricks!\n";
 }
