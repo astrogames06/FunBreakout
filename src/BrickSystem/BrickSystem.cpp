@@ -9,6 +9,8 @@ namespace Scenes
 
 void BrickLoadSystem(const std::vector<std::string>& level)
 {
+    for (Brick* b : game.GetEntitiesOfType<Brick>()) b->Delete();
+
     for (int i = 0; i < level.size(); i++)
     {
         std::string row = level[i];

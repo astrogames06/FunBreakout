@@ -45,6 +45,11 @@ private:
             level = (level + 1) % game_levels.size();
             BrickLoadSystem(game_levels[level]);
         }
+        if (IsKeyPressed(KEY_E))
+        {
+            level = (level + 1) % game_levels.size();
+            BrickLoadSystem(game_levels[level]);
+        }
     }
 
     void Draw() override
