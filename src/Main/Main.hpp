@@ -9,6 +9,7 @@
 #include "../Ball/Ball.hpp"
 
 #include "../BrickSystem/BrickSystem.hpp"
+#include "../PowerUp/PowerUpSystem.hpp"
 
 #include <iostream>
 
@@ -40,6 +41,8 @@ private:
 
     void Update() override
     {
+        RunPowerUpSystem();
+
         if (game.GetEntitiesOfType<Brick>().size() == 0)
         {
             level = (level + 1) % game_levels.size();

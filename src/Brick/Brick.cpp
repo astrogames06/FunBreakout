@@ -7,6 +7,7 @@
 #include "../Main/Main.hpp"
 #include "../Player/Player.hpp"
 #include "../Ball/Ball.hpp"
+#include "../PowerUp/PowerUp.hpp"
 
 namespace Scenes
 {
@@ -30,7 +31,7 @@ void Brick::Init()
 void Brick::Update()
 {
     Ball* ball = game.GetEntityOfType<Ball>();
-    
+
     if (CheckCollisionRecs(
         {(float)x, (float)y, (float)BRICK_WIDTH, (float)BRICK_HEIGHT}, 
         {(float)ball->x, (float)ball->y, ball->BALL_SIZE, ball->BALL_SIZE}
@@ -51,6 +52,13 @@ void Brick::Update()
         Delete();
         // Increases score
         Scenes::main_scene->score++;
+
+        // Adds power up
+        std::unique_ptr<PowerUp> new_powerup = std::make_unique<PowerUp>();
+        new_powerup->x = x + (BRICK_WIDTH/2);
+        new_powerup->y = y + (BRICK_HEIGHT/2);
+
+        game.AddEntity(std::move(new_powerup));
     }
 }
 

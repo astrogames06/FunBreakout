@@ -6,9 +6,10 @@
 
 void Ball::Init()
 {
+    color = WHITE;
+
     x = game.WIDTH/2-BALL_SIZE/2;
     y = game.HEIGHT/2-BALL_SIZE/2;
-
 }
 
 void Ball::Update()
@@ -61,5 +62,5 @@ void Ball::Update()
 
 void Ball::Draw()
 {
-    DrawRectangle(x, y, BALL_SIZE, BALL_SIZE, WHITE);
+    DrawRectangle(x, y, BALL_SIZE, BALL_SIZE, color);
 }

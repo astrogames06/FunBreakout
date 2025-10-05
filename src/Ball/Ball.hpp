@@ -9,9 +9,14 @@ extern Game game;
 class Ball : public Entity
 {
 public:
-    const float BALL_SIZE = 20.f;
-    const float BALL_SPEED = 200.f;
+    Color color;
     Vector2 vel;
+
+    float BALL_SIZE = 20.f;
+    const float BALL_SIZE_DEFAULT = 20.f;
+    
+    float BALL_SPEED = 200.f;
+    const float BALL_SPEED_DEFAULT = 200.f;
 
     void Init() override;
     void Update() override;
