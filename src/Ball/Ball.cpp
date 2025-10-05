@@ -4,9 +4,6 @@
 
 #include "../Player/Player.hpp"
 
-const float BALL_SPEED = 200.f;
-Vector2 vel;
-
 void Ball::Init()
 {
     x = game.WIDTH/2-BALL_SIZE/2;
