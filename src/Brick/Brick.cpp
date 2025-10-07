@@ -54,11 +54,14 @@ void Brick::Update()
         Scenes::main_scene->score++;
 
         // Adds power up
-        std::unique_ptr<PowerUp> new_powerup = std::make_unique<PowerUp>();
-        new_powerup->x = x + (BRICK_WIDTH/2);
-        new_powerup->y = y + (BRICK_HEIGHT/2);
+        if (GetRandomValue(0, 5) == 3)
+        {
+            std::unique_ptr<PowerUp> new_powerup = std::make_unique<PowerUp>();
+            new_powerup->x = x + (BRICK_WIDTH/2);
+            new_powerup->y = y + (BRICK_HEIGHT/2);
 
-        game.AddEntity(std::move(new_powerup));
+            game.AddEntity(std::move(new_powerup));
+        }
     }
 }
 

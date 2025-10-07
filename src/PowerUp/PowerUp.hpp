@@ -10,7 +10,7 @@ enum POWERUP_TYPE
 {
     FIRE = 0,
     SPEED = 1,
-    SIZE = 2
+    SIZE = 2,
 };
 
 class PowerUp : public Entity
