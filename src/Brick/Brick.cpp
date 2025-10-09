@@ -37,16 +37,19 @@ void Brick::Update()
         {(float)ball->x, (float)ball->y, ball->BALL_SIZE, ball->BALL_SIZE}
     ))
     {
-        // Makes ball bounce off brick
-        float ball_center_x = ball->x + (ball->BALL_SIZE / 2.f);
-        float ball_center_y = ball->y + (ball->BALL_SIZE / 2.f);
-        float brick_center_x = x + (BRICK_WIDTH / 2.f);
-        float brick_center_y = y + (BRICK_HEIGHT / 2.f);
+        if (ball->bounce)
+        {
+            // Makes ball bounce off brick unless if its on bounce mode
+            float ball_center_x = ball->x + (ball->BALL_SIZE / 2.f);
+            float ball_center_y = ball->y + (ball->BALL_SIZE / 2.f);
+            float brick_center_x = x + (BRICK_WIDTH / 2.f);
+            float brick_center_y = y + (BRICK_HEIGHT / 2.f);
 
-        if (abs(ball_center_x-brick_center_x) > abs(ball_center_y-brick_center_y))
-            ball->vel.x *= -1;
-        else
-            ball->vel.y *= -1;
+            if (abs(ball_center_x-brick_center_x) > abs(ball_center_y-brick_center_y))
+                ball->vel.x *= -1;
+            else
+                ball->vel.y *= -1;
+        }
 
         // Deletes the brick
         Delete();

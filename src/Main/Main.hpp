@@ -19,6 +19,7 @@ namespace Scenes
     extern std::unique_ptr<Menu> menu_scene;
 };
 
+class Main;
 class Main : public Scene
 {
 public:

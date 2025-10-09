@@ -35,7 +35,7 @@ int main(void)
 
 	Scenes::main_scene = std::make_unique<Main>();
     Scenes::menu_scene = std::make_unique<Menu>();
-	game.SetScene(Scenes::main_scene.get());
+	game.SetScene(Scenes::menu_scene.get());
 
 	#if defined(PLATFORM_WEB)
     	emscripten_set_main_loop(UpdateDrawFrame, 0, 1);

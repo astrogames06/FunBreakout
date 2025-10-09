@@ -18,6 +18,8 @@ public:
     float BALL_SPEED = 200.f;
     const float BALL_SPEED_DEFAULT = 200.f;
 
+    bool bounce = true;
+
     void Init() override;
     void Update() override;
     void Draw() override;

@@ -1,5 +1,7 @@
 #include "PowerUpSystem.hpp"
 
+#include <chrono>
+
 #include "PowerUp.hpp"
 #include "../Ball/Ball.hpp"
 #include "../Main/Main.hpp"
@@ -11,8 +13,8 @@ namespace Scenes
     extern std::unique_ptr<Main> main_scene;
 };
 
-int before_score;
-bool save_before_score = false;
+std::chrono::steady_clock::time_point start_time;
+bool set_start_time = false;
 
 void RunPowerUpSystem()
 {
@@ -20,16 +22,16 @@ void RunPowerUpSystem()
     
     if (power_upped && ball != nullptr)
     {
-        if (!save_before_score)
+        if (!set_start_time)
         {
-            before_score = Scenes::main_scene->score;
-            save_before_score = true;
+            start_time = std::chrono::steady_clock::now();
+            set_start_time = true;
         }
 
         switch (current_powerup_type)
         {
         case FIRE:
-            ball->BALL_SPEED = ball->BALL_SPEED_DEFAULT - 50.f;
+            ball->bounce = false;
             break;
         case SPEED:
             ball->BALL_SPEED = ball->BALL_SPEED_DEFAULT + 100.f;
@@ -42,13 +44,18 @@ void RunPowerUpSystem()
         }
     }
 
-    // Resets ball
-    if (Scenes::main_scene->score >= (before_score+5))
-    {
+    // Times ball powerup and resets after 5 seconds
+    std::chrono::steady_clock::time_point current_time = std::chrono::steady_clock::now();
+    std::chrono::duration<float> elapsed = current_time - start_time;
+
+    if (elapsed.count() >= 5.f)
+    {       
         ball->color = WHITE;
         ball->BALL_SPEED = ball->BALL_SPEED_DEFAULT;
         ball->BALL_SIZE = ball->BALL_SIZE_DEFAULT;
+        ball->bounce = true;
 
-        save_before_score = false;
+        set_start_time = false;
+        power_upped = false;
     }
 }

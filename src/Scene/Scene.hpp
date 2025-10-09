@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <raylib.h>
+#include <memory>
 
 #include "../Entity/Entity.hpp"
 
